@@ -41,8 +41,12 @@ if not os.listdir(SParamFolder):
     logging.error(SParamFolder+' is empty! No checks will be done.')
     sys.exit('ERROR: '+SParamFolder+' is empty! No checks will be done.')
 
-pat_snp = re.compile('\.s\d+p')
+pat_snp = re.compile('\.s\d+p$')
 sNpFiles={f:os.path.join(SParamFolder,f) for f in os.listdir(SParamFolder) if re.search(pat_snp, f)}
+pat_ts = re.compile('\.ts$')
+for f in os.listdir(SParamFolder):
+    if re.search(pat_ts, f):
+        sNpFiles[f] = os.path.join(SParamFolder,f)
 if sNpFiles == {}:
     logging.error(SParamFolder+' has no sNp file! No checks will be done.')
     sys.exit('ERROR: '+SParamFolder+' has no sNp file! No checks will be done.')
@@ -59,6 +63,7 @@ for snpf in sNpFiles:
            "-checkcausality",
            sNpFiles[snpf]
            ]
+    Msg('Running checks on '+ snpf + '. This can take a while depending on file size...')
     Msg(' ---- Results for '+ snpf + ' : ----- ')
     output_str=str(subprocess.Popen(cmd,stdout=subprocess.PIPE).communicate()[0])
     output_lst=output_str.split('\\r\\n')
@@ -75,5 +80,7 @@ for snpf in sNpFiles:
             caus_flag = True
         if "Maximum causality" in line and caus_flag:
             Msg(line[17:])
-
+        if "Causality check is" in line and caus_flag:
+            Msg(line[17:])
+          
 Msg('All messages saved under "'+os.path.join(SParamFolder,'Passivity and Causality Check.log')+'"')
