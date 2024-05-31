@@ -1,6 +1,6 @@
-# inputFile = r"D:\Pre-sales\Bosch\20240606\prep\Galileo_G87173_204.brd"
-# EMIRulesFile = r"D:/Pre-sales/Bosch/20240606/prep/emi_rules.xml"
-# EMITagsFile = r"D:/Pre-sales/Bosch/20240606/prep/emi_tags.tgs"        
+# inputFile = r"D:\prep\Galileo_G87173_204.brd"
+# EMIRulesFile = r"D:/prep/emi_rules.xml"
+# EMITagsFile = r"D:/prep/emi_tags.tgs"        
 
 # ================================================================================================
 # Inputs needed:
