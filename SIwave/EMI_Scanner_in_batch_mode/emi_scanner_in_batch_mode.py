@@ -90,7 +90,7 @@ else:
     if installedAnsysEM == []:
         sys.exit('ERROR: No valid version of Ansys EM installed. No checks will be done.')
     else:
-        AnsysEMPath = os.environ[installedAnsysEM[3]]
+        AnsysEMPath = os.environ[installedAnsysEM[0]]
 Msg('Ansys EM path: '+AnsysEMPath)
 Msg('Input File: '+inputFile)
 Msg('EMI Rules File: '+EMIRulesFile)
