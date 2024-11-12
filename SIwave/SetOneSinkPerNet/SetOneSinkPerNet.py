@@ -5,7 +5,6 @@ inputFile = r"D:\test\dummy_pkg_wo_src_snk.siw"
 # =====================================================================================================================================
 
 import re
-import os
 
 with open(inputFile,'r') as fi:
     fi_txt = fi.read()
