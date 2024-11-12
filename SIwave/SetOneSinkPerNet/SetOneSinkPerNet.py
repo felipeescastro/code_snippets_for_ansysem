@@ -6,6 +6,19 @@ inputFile = r"D:\test\dummy_pkg_wo_src_snk.siw"
 
 import re
 
+def Msg(message,msglvl=0):
+    if "oDesktop" in globals():
+        oDesktop.AddMessage('','',msglvl,message)
+    elif "oDoc" in globals():
+        if msglvl == 0:
+            oDoc.ScrAddInfo(message)
+        elif msglvl==1:
+            oDoc.ScrAddWarning(message)
+        elif msglvl==2:
+            oDoc.ScrAddError(message)
+    else:
+        print(message)
+
 with open(inputFile,'r') as fi:
     fi_txt = fi.read()
 
@@ -95,4 +108,5 @@ for net in nets:
 # write output file with suffix "_new"
 with open(inputFile.replace('.siw','_new.siw'),'w') as fo:
     fo.write(fo_txt)
+    Msg('{} created successfuly!'.format(fo.name)
                     
